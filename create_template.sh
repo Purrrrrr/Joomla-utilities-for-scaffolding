@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=`dirname $0`
+BASEDIR="`dirname $0`/empty_template"
 
 if [ -z $1 ] 
 then
@@ -26,11 +26,9 @@ else
   exit
 fi
 
-# We for in case somebody is creating stuff into our folder so 
-# we won't copy $TARGET into $TARGET
 for path in `find $BASEDIR`
 do
-  if [ "$path" = "$BASEDIR/$TARGET" -o "$path" = "$BASEDIR" -o "$path" = "templateDetails.xml" -o "$path" = $0 ]
+  if [ "$path" = "$BASEDIR/$TARGET" -o "$path" = "$BASEDIR" -o "$path" = "templateDetails.xml" ]
   then
     continue
   fi
