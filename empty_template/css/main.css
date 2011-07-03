@@ -1,1 +1,7 @@
 /* Main css here */
+.contents {
+  position: relative;
+  width: 912px;
+  margin: 0 auto;
+}
+

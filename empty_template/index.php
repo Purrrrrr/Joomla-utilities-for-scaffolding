@@ -20,15 +20,18 @@ defined('_JEXEC') or die;
 </head>
 <body class="yksinkertaistettu component-<?php echo htmlspecialchars(JRequest::getString("option"))?> view-<?php echo htmlspecialchars(JRequest::getString("view")); ?>">
 <?php if ($this->getBuffer('message')) : ?>
+<?php endif; ?>
+<div class="header">
+  <jdoc:include type="modules" name="mainmenu" />
+</div>
 <div class="errors">
   <h2>
      Huomio 
   </h2>
   <jdoc:include type="message" />
 </div>
-<?php endif; ?>
-
-<jdoc:include type="component" />
-
+<div class="contents">
+  <jdoc:include type="component" />
+</div>
 </body>
 </html>
