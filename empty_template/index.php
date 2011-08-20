@@ -11,12 +11,12 @@ defined('_JEXEC') or die;
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/template_name/javascript/main.js"></script>
     <jdoc:include type="head" />
-    <!--[if lte IE 6]>
-        <link href="<?php echo $this->baseurl ?>/templates/template_name/css/ieonly.css" rel="stylesheet" type="text/css" />
-    <![endif]-->
+    <?php for($ie = 7; $ie <= 10; ++$ie):
+    if (file_exists(dirname(__FILE__)."/css/ie{$ie}only.css")): ?>
     <!--[if IE 7]>
-        <link href="<?php echo $this->baseurl ?>/templates/template_name/css/ie7only.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->baseurl ?>/templates/sikariporras/css/ie<?php echo $ie; ?>only.css" rel="stylesheet" type="text/css" />
     <![endif]-->
+    <?php endif; endfor; ?>
 </head>
 <body class="yksinkertaistettu component-<?php echo htmlspecialchars(JRequest::getString("option"))?> view-<?php echo htmlspecialchars(JRequest::getString("view")); ?>">
 <?php if ($this->getBuffer('message')) : ?>
