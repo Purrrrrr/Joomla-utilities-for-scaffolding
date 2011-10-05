@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: emptyadmin.xml 21505 2011-06-10 07:21:09Z infograf768 $ -->
+<extension type="component" version="1.7" method="upgrade">
+	<name>com_emptyadmin</name>
+	<author>David Consuegra</author>
+	<creationDate>component_creation_date</creationDate>
+	<authorEmail></authorEmail>
+	<authorUrl></authorUrl>
+	<copyright></copyright>
+	<license></license>
+	<version>0.0.1</version>
+	<description>component_description</description>
+  <install>
+    <sql>
+      <file driver="mysql" charset="utf8">install/install.sql</file>
+      <file driver="mysql">install/install.sql</file>
+    </sql>
+  </install>
+  <uninstall>
+    <sql>
+      <file driver="mysql" charset="utf8">install/uninstall.sql</file>
+      <file driver="mysql">install/uninstall.sql</file>
+    </sql>
+  </uninstall>
+  <files>
+  </files>
+	<administration>
+		<files folder="admin">
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>emptyadmin.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+</extension>
