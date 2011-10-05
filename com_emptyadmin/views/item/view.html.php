@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class EmptyAdminViewItem extends JView
+class EmptyadminViewItem extends JView
 {
 	protected $form;
 	protected $item;

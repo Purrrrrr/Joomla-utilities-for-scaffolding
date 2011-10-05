@@ -4,6 +4,6 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
 
-class EmptyAdminController extends JController
+class EmptyadminController extends JController
 {
 }

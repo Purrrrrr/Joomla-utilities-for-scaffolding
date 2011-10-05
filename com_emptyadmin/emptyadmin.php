@@ -6,6 +6,6 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.controller');
 
 // Execute the task.
-$controller	= JController::getInstance('EmptyAdmin');
+$controller	= JController::getInstance('Emptyadmin');
 $controller->execute(JRequest::getCmd('task'));
 $controller->redirect();
