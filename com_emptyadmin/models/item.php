@@ -64,14 +64,6 @@ class MenusModelItem extends JModelAdmin
 		return (object) array('key' => $this->helpKey, 'url' => $this->helpURL, 'local' => $this->helpLocal);
 	}
 
-	/**
-	 * Method to get a menu item.
-	 *
-	 * @param	integer	$pk	An optional id of the object to get, otherwise the id from the model state is used.
-	 *
-	 * @return	mixed	Menu item data object on success, false on failure.
-	 * @since	1.6
-	 */
 	public function getItem($pk = null)
 	{
 		// Initialise variables.
@@ -168,104 +160,10 @@ class MenusModelItem extends JModelAdmin
 		$registry->loadString($table->params);
 		$result->params = $registry->toArray();
 
-		// Merge the request arguments in to the params for a component.
-		if ($table->type == 'component') {
-			// Note that all request arguments become reserved parameter names.
-			$result->request = $args;
-			$result->params = array_merge($result->params, $args);
-		}
-
-		if ($table->type == 'alias') {
-			// Note that all request arguments become reserved parameter names.
-			$args = array();
-			parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
-			$result->params = array_merge($result->params, $args);
-		}
-
-		if ($table->type == 'url') {
-			// Note that all request arguments become reserved parameter names.
-			$args = array();
-			parse_str(parse_url($table->link, PHP_URL_QUERY), $args);
-			$result->params = array_merge($result->params, $args);
-		}
-
-		// Load associated menu items
-		if (JFactory::getApplication()->get('menu_associations', 0)) {
-			if ($pk != null) {
-				$result->associations = MenusHelper::getAssociations($pk);
-			}
-			else {
-				$result->associations = array();
-			}
-		}
 
 		return $result;
 	}
 
-	/**
-	 * Get the list of modules not in trash.
-	 *
-	 * @return	mixed	An array of module records (id, title, position), or false on error.
-	 * @since	1.6
-	 */
-	public function getModules()
-	{
-		$db = $this->getDbo();
-		$query = $db->getQuery(true);
-
-		$query->select('a.id, a.title, a.position, a.published');
-		$query->from('#__modules AS a');
-
-		// Join on the module-to-menu mapping table.
-		// We are only interested if the module is displayed on ALL or THIS menu item (or the inverse ID number).
-		$query->select('map.menuid');
-		$query->select('map2.menuid < 0 as except');
-		$query->join('LEFT', '#__modules_menu AS map ON map.moduleid = a.id AND (map.menuid = 0 OR ABS(map.menuid) = '.(int) $this->getState('item.id').')');
-		$query->join('LEFT', '#__modules_menu AS map2 ON map2.moduleid = a.id AND map2.menuid < 0');
-		$query->group('a.id');
-
-		// Join on the asset groups table.
-		$query->select('ag.title AS access_title');
-		$query->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
-		$query->where('a.published >= 0');
-		$query->where('a.client_id = 0');
-		$query->order('a.position, a.ordering');
-
-		$db->setQuery($query);
-		$result = $db->loadObjectList();
-
-		if ($error = $db->getError()) {
-			$this->setError($error);
-			return false;
-		}
-
-		return $result;
-	}
-
-	/**
-	 * A protected method to get the where clause for the reorder
-	 * This ensures that the row will be moved relative to a row with the same menutype
-	 *
-	 * @param	JTableMenu $table instance
-	 *
-	 * @return	array	An array of conditions to add to add to ordering queries.
-	 * @since	1.6
-	 */
-	protected function getReorderConditions($table)
-	{
-		return 'menutype = ' . $this->_db->Quote($table->menutype);
-	}
-
-	/**
-	 * Returns a Table object, always creating it
-	 *
-	 * @param	type	$type	The table type to instantiate
-	 * @param	string	$prefix	A prefix for the table class name. Optional.
-	 * @param	array	$config	Configuration array for model. Optional.
-	 *
-	 * @return	JTable	A database object
-	 * @since	1.6
-	 */
 	public function getTable($type = 'Menu', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
