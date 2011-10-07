@@ -6,4 +6,5 @@ jimport('joomla.application.component.controller');
 
 class EmptyadminController extends JController
 {
+  protected $default_view = 'items';
 }

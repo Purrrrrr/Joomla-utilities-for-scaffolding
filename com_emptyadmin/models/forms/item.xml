@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- $Id: item.xml 22009 2011-08-28 08:02:45Z infograf768 $ -->
 <form>
-	<fieldset>
-		<field
-			name="id"
-			type="text"
-			class="readonly"
-			label="JGLOBAL_FIELD_ID_LABEL"
-			description ="JGLOBAL_FIELD_ID_DESC"
-			default="0"
-			filter="int"
-			readonly="true"/>
-
+	<fieldset name="main" label="Edit">
 		<field
 			name="name"
 			type="text"

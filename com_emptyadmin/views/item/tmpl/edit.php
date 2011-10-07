@@ -1,7 +1,8 @@
 <?php
 defined('_JEXEC') or die;
+JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.modal');
 ?>
-
 <script type="text/javascript">
 	Joomla.submitbutton = function(task, type)
 	{
@@ -11,22 +12,27 @@ defined('_JEXEC') or die;
   }
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_emptyadmin&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_emptyadmin&view=item&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
-<div class="width-60 fltlft">
-	<fieldset class="adminform">
-		<legend><?php echo JText::_('COM_MENUS_ITEM_DETAILS');?></legend>
+  <div class="width-60 fltlft">
+    <?php foreach($this->form->getFieldsets() as $fieldset): ?>
+    <fieldset class="adminform">
+      <legend><?php echo $fieldset->label;?></legend>
 
-    <ul class="adminformlist">
-      <?php foreach ($this->form->getFieldset('main') as $field): ?>
-      <li>
-        <?php echo $field->label; ?>
-        <?php echo $field->input; ?>
-      </li>
-      <?php endforeach; ?>
-    </ul>
-	</fieldset>
-</div>
+      <ul class="adminformlist">
+        <?php foreach ($this->form->getFieldset($fieldset->name) as $field): ?>
+        <li>
+          <?php echo $field->label; ?>
+          <?php echo $field->input; ?>
+        </li>
+        <?php endforeach; ?>
+      </ul>
+    </fieldset>
+    <?php endforeach; ?>
+    <input type="hidden" name="jform[id]" value="<?php echo htmlspecialchars($this->item->id); ?>" />
+    <?php echo JHtml::_('form.token'); ?>
+    <input type="hidden" name="task" value="" />
+  </div>
 </form>
 
 

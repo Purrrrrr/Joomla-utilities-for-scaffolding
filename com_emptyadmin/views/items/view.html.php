@@ -31,10 +31,9 @@ class EmptyadminViewItems extends JView
 		JToolBarHelper::title('', 'module.png');
 
     JToolBarHelper::addNew('item.add');
-    JToolBarHelper::publish('items.publish', 'JTOOLBAR_PUBLISH', true);
-    JToolBarHelper::unpublish('items.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+    //JToolBarHelper::publish('items.publish', 'JTOOLBAR_PUBLISH', true);
+    //JToolBarHelper::unpublish('items.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 
-    JToolBarHelper::deleteList('', 'items.delete', 'JTOOLBAR_EMPTY_TRASH');
     JToolBarHelper::trash('items.trash');
 	}
 }
