@@ -2,6 +2,7 @@
 
 TEMPLATE='emptyadmin'
 TEMPLATECAPS=`echo $TEMPLATE |  sed -e 's/^./\U&/g'`
+TEMPLATEALLCAPS=`echo $TEMPLATE |  sed -e 's/./\U&/g'`
 BASEDIR="`dirname $0`/com_$TEMPLATE"
 
 if [ -z $1 ] 
@@ -18,6 +19,7 @@ then
   COMPONENTNAME=${COMPONENTNAME:4}
 fi
 COMPONENTNAMECAPS=`echo $COMPONENTNAME |  sed -e 's/^./\U&/g'`
+COMPONENTNAMEALLCAPS=`echo $COMPONENTNAME |  sed -e 's/./\U&/g'`
 
 echo Creating component $TEMPLATENAME into $TARGET
 echo "What is the component name \"$COMPONENTNAME\" in uppercase? Press enter to use \"$COMPONENTNAMECAPS\""
@@ -36,17 +38,21 @@ do
   if [ "$path" = "$BASEDIR/$TARGET" -o "$path" = "$BASEDIR/$TEMPLATE.xml" ]
   then
     continue
-  fi
+  fi 
   file=${path:${#BASEDIR}}
-  #file has / as first char
 
   if [ -d $path ] 
   then
     mkdir $TARGET$file
-  else
+  else 
     echo $TARGET$file
-    sed "s/$TEMPLATE/$COMPONENTNAME/" $path |
-      sed "s/$TEMPLATECAPS/$COMPONENTNAMECAPS/" > $TARGET$file
+    if [ ${file:0:9} = '/language' ]
+    then
+      sed "s/$TEMPLATEALLCAPS/$COMPONENTNAMEALLCAPS/" $path > $TARGET$file
+    else 
+      sed "s/$TEMPLATE/$COMPONENTNAME/" $path |
+        sed "s/$TEMPLATECAPS/$COMPONENTNAMECAPS/" > $TARGET$file
+    fi
   fi
 done
 
@@ -55,3 +61,5 @@ mv $TARGET/$TEMPLATE.php $TARGET/$COMPONENTNAME.php
 sed "s/component_description/$DESCRIPTION/" "$BASEDIR/$TEMPLATE.xml" |
    sed "s/component_creation_date/`date +%d.%m.%Y`/" |
    sed "s/$TEMPLATE/$COMPONENTNAME/" > "$TARGET/$COMPONENTNAME.xml"
+
+ln -s `dirname $0`/copy_view.sh $TARGET/copy_view.sh

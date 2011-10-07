@@ -2,6 +2,9 @@
 <form>
 	<fieldset name="main" label="Edit">
 		<field
+			name="id"
+			type="hidden"/>
+		<field
 			name="name"
 			type="text"
 			label="Nimi"

@@ -5,7 +5,7 @@ JHtml::_('behavior.modal');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task, type)
-	{
+  { 
 		if (task == 'item.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
 			Joomla.submitform(task, document.id('item-form'));
     }
@@ -29,10 +29,7 @@ JHtml::_('behavior.modal');
       </ul>
     </fieldset>
     <?php endforeach; ?>
-    <input type="hidden" name="jform[id]" value="<?php echo htmlspecialchars($this->item->id); ?>" />
     <?php echo JHtml::_('form.token'); ?>
     <input type="hidden" name="task" value="" />
   </div>
 </form>
-
-

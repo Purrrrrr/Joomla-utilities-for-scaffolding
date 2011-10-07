@@ -34,6 +34,6 @@ class EmptyadminViewItems extends JView
     //JToolBarHelper::publish('items.publish', 'JTOOLBAR_PUBLISH', true);
     //JToolBarHelper::unpublish('items.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 
-    JToolBarHelper::trash('items.trash');
+    JToolBarHelper::deleteList('Are you ser you want to remove these items?', 'items.delete');
 	}
 }

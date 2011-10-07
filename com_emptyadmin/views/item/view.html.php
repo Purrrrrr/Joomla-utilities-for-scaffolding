@@ -40,6 +40,7 @@ class EmptyadminViewItem extends JView
 
     JToolBarHelper::apply('item.apply');
     JToolBarHelper::save('item.save');
+    JToolBarHelper::save2copy('item.save2copy');
 
 		if ($isNew)  {
 			JToolBarHelper::cancel('item.cancel');

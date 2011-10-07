@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Id: emptyadmin.xml 21505 2011-06-10 07:21:09Z infograf768 $ -->
 <extension type="component" version="1.7" method="upgrade">
 	<name>com_emptyadmin</name>
 	<author>David Consuegra</author>
@@ -24,7 +23,8 @@
   </uninstall>
   <files>
   </files>
-	<administration>
+  <administration>
+    <menu>component_menuitem</menu>
 		<files folder="admin">
 			<filename>config.xml</filename>
 			<filename>controller.php</filename>

@@ -9,11 +9,7 @@ class EmptyadminModelItem extends JModelAdmin
 {
 	protected function canDelete($record)
   {
-    return true;
-	}
-	protected function canSave($data = array(), $key = 'id')
-	{
-		return true;
+    return parent::canDelete($record);
 	}
 
 	public function getForm($data = array(), $loadData = true)
@@ -43,17 +39,17 @@ class EmptyadminModelItem extends JModelAdmin
 
 	protected function populateState()
   {
-    parent::populateState();
+    return parent::populateState();
 	}
 
 	protected function preprocessForm(JForm $form, $data)
 	{
-		parent::preprocessForm($form, $data);
+		return parent::preprocessForm($form, $data);
 	}
 
 	public function save($data)
   {
-    parent::save($data);
+    return parent::save($data);
 	}
 
 }
