@@ -13,6 +13,10 @@ fi
 
 TARGET=$1
 COMPONENTNAME=`basename $TARGET`
+if [ ${COMPONENTNAME:0:4} = 'com_' ]
+then
+  COMPONENTNAME=${COMPONENTNAME:4}
+fi
 COMPONENTNAMECAPS=`echo $COMPONENTNAME |  sed -e 's/^./\U&/g'`
 
 echo Creating component $TEMPLATENAME into $TARGET
