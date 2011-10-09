@@ -62,4 +62,4 @@ sed "s/component_description/$DESCRIPTION/" "$BASEDIR/$TEMPLATE.xml" |
    sed "s/component_creation_date/`date +%d.%m.%Y`/" |
    sed "s/$TEMPLATE/$COMPONENTNAME/" > "$TARGET/$COMPONENTNAME.xml"
 
-ln -s `dirname $0`/copy_view.sh $TARGET/copy_view.sh
+ln -s `readlink -f \`dirname $0\``/copy_view.sh $TARGET/copy_view.sh
