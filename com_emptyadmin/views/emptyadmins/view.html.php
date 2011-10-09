@@ -5,17 +5,14 @@ jimport('joomla.application.component.view');
 
 class EmptyadminViewEmptyadmins extends JView
 {
-	protected $f_levels;
 	protected $items;
-	protected $pagination;
-	protected $state;
 
 	/**
 	 * Display the view
 	 */
 	public function display($tpl = null)
 	{
-		$this->items		= $this->get('Emptyadmins');
+		$this->items = $this->get('Items');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -31,9 +28,9 @@ class EmptyadminViewEmptyadmins extends JView
 		JToolBarHelper::title('', 'module.png');
 
     JToolBarHelper::addNew('item.add');
-    //JToolBarHelper::publish('items.publish', 'JTOOLBAR_PUBLISH', true);
-    //JToolBarHelper::unpublish('items.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+    //JToolBarHelper::publish('emptyadmins.publish', 'JTOOLBAR_PUBLISH', true);
+    //JToolBarHelper::unpublish('emptyadmins.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 
-    JToolBarHelper::deleteList('Are you ser you want to remove these items?', 'items.delete');
+    JToolBarHelper::deleteList('Are you ser you want to remove these emptyadmins?', 'emptyadmins.delete');
 	}
 }

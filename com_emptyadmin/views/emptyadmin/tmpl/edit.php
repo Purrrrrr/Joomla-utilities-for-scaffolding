@@ -6,13 +6,13 @@ JHtml::_('behavior.modal');
 <script type="text/javascript">
 	Joomla.submitbutton = function(task, type)
   { 
-		if (task == 'item.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
-			Joomla.submitform(task, document.id('item-form'));
+		if (task == 'emptyadmin.cancel' || document.formvalidator.isValid(document.id('emptyadmin-form'))) {
+			Joomla.submitform(task, document.id('emptyadmin-form'));
     }
   }
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_emptyadmin&view=item&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_emptyadmin&view=emptyadmin&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="emptyadmin-form" class="form-validate">
 
   <div class="width-60 fltlft">
     <?php foreach($this->form->getFieldsets() as $fieldset): ?>

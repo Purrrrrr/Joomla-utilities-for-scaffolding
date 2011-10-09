@@ -20,7 +20,7 @@ class EmptyadminViewEmptyadmin extends JView
 	public function display($tpl = null)
 	{
 		$this->form		= $this->get('Form');
-		$this->item		= $this->get('Emptyadmin');
+		$this->item   = $this->get('Item');
 
 		parent::display($tpl);
 		$this->addToolbar();
@@ -38,14 +38,14 @@ class EmptyadminViewEmptyadmin extends JView
 		$isNew		= ($this->item->id == 0);
 		JToolBarHelper::title('');
 
-    JToolBarHelper::apply('item.apply');
-    JToolBarHelper::save('item.save');
-    JToolBarHelper::save2copy('item.save2copy');
+    JToolBarHelper::apply('emptyadmin.apply');
+    JToolBarHelper::save('emptyadmin.save');
+    JToolBarHelper::save2copy('emptyadmin.save2copy');
 
 		if ($isNew)  {
-			JToolBarHelper::cancel('item.cancel');
+			JToolBarHelper::cancel('emptyadmin.cancel');
 		} else {
-			JToolBarHelper::cancel('item.cancel', 'JTOOLBAR_CLOSE');
+			JToolBarHelper::cancel('emptyadmin.cancel', 'JTOOLBAR_CLOSE');
 		}
 	}
 }

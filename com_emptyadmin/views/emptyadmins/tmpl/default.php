@@ -4,7 +4,7 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.multiselect');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_emptyadmin&view=items');?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_emptyadmin&view=emptyadmins');?>" method="post" name="adminForm" id="adminForm">
 	<table class="adminlist">
 		<thead>
 			<tr>
