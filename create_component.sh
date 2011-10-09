@@ -18,7 +18,7 @@ if [ ${COMPONENTNAME:0:4} = 'com_' ]
 then
   COMPONENTNAME=${COMPONENTNAME:4}
 fi
-COMPONENTNAMECAPS=`echo $COMPONENTNAME |  sed -e 's/^./\U&/g'`
+COMPONENTNAMECAPS=`echo $COMPONENTNAME |  sed -e 's/^./\U&/'`
 COMPONENTNAMEALLCAPS=`echo $COMPONENTNAME |  sed -e 's/./\U&/g'`
 
 echo Creating component $TEMPLATENAME into $TARGET
@@ -36,8 +36,7 @@ DESCRIPTION="`echo "$DESCRIPTION_RAW" | sed "s/\\//\\\\\\\\\\\\//g" | sed "s/&/\
 for path in `find $BASEDIR`
 do
   if [ "$path" = "$BASEDIR/$TARGET" -o "$path" = "$BASEDIR/$TEMPLATE.xml" ]
-  then
-    continue
+  then continue
   fi 
   file=`echo ${path:${#BASEDIR}} | sed "s/$TEMPLATE/$COMPONENTNAME/"`
 
@@ -50,8 +49,8 @@ do
     then
       sed "s/$TEMPLATEALLCAPS/$COMPONENTNAMEALLCAPS/" $path > $TARGET$file
     else 
-      sed "s/$TEMPLATE/$COMPONENTNAME/" $path |
-        sed "s/$TEMPLATECAPS/$COMPONENTNAMECAPS/" > $TARGET$file
+      sed "s/$TEMPLATE/$COMPONENTNAME/g" $path |
+        sed "s/$TEMPLATECAPS/$COMPONENTNAMECAPS/g" > $TARGET$file
     fi
   fi
 done

@@ -24,7 +24,7 @@
   <files>
   </files>
   <administration>
-    <menu>component_menuitem</menu>
+    <menu>Emptyadmins</menu>
 		<files folder="admin">
 			<filename>config.xml</filename>
 			<filename>controller.php</filename>
