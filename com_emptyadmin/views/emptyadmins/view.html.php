@@ -3,7 +3,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class EmptyadminViewItems extends JView
+class EmptyadminViewEmptyadmins extends JView
 {
 	protected $f_levels;
 	protected $items;
@@ -15,7 +15,7 @@ class EmptyadminViewItems extends JView
 	 */
 	public function display($tpl = null)
 	{
-		$this->items		= $this->get('Items');
+		$this->items		= $this->get('Emptyadmins');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {

@@ -5,7 +5,7 @@ defined('_JEXEC') or die;
 // Include dependancies.
 jimport('joomla.application.component.modeladmin');
 
-class EmptyadminModelItem extends JModelAdmin
+class EmptyadminModelEmptyadmin extends JModelAdmin
 {
 	protected function canDelete($record)
   {
@@ -15,7 +15,7 @@ class EmptyadminModelItem extends JModelAdmin
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_emptyadmin.item', 'item', array('control' => 'jform', 'load_data' => $loadData), true);
+		$form = $this->loadForm('com_emptyadmin.emptyadmin', 'emptyadmin', array('control' => 'jform', 'load_data' => $loadData), true);
 		if (empty($form)) {
 			return false;
 		}
@@ -24,7 +24,7 @@ class EmptyadminModelItem extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		return array_merge((array)$this->getItem(), (array)JFactory::getApplication()->getUserState('com_emptyadmin.edit.item.data', array()));
+		return array_merge((array)$this->getItem(), (array)JFactory::getApplication()->getUserState('com_emptyadmin.edit.emptyadmin.data', array()));
 	}
 
 	public function getItem($pk = null)
@@ -32,7 +32,7 @@ class EmptyadminModelItem extends JModelAdmin
     return parent::getItem($pk);
 	}
 
-	public function getTable($type = 'Items', $prefix = 'EmptyadminTable', $config = array())
+	public function getTable($type = 'Emptyadmins', $prefix = 'EmptyadminTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

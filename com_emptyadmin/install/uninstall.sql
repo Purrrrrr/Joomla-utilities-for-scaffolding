@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS #__emptyadmin_item;
+DROP TABLE IF EXISTS #__emptyadmin;

@@ -3,7 +3,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
 
-class EmptyadminModelItems extends JModelList
+class EmptyadminModelEmptyadmins extends JModelList
 {
 
 	protected function getListQuery()
@@ -11,7 +11,7 @@ class EmptyadminModelItems extends JModelList
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 		$query->select('*');
-		$query->from('#__emptyadmin_item AS i');
+		$query->from('#__emptyadmin AS i');
 
 		return $query;
 	}

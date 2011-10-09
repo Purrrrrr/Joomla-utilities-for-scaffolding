@@ -3,9 +3,9 @@ defined('_JEXEC') or die;
 
 jimport( 'joomla.application.component.controlleradmin' );
 
-class EmptyadminControllerItems extends JControllerAdmin
+class EmptyadminControllerEmptyadmins extends JControllerAdmin
 {
-  public function getModel($name = 'Item', $prefix = 'EmptyadminModel') {
+  public function getModel($name = 'Emptyadmin', $prefix = 'EmptyadminModel') {
     return parent::getModel($name,$prefix);
   }
 

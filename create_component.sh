@@ -39,7 +39,7 @@ do
   then
     continue
   fi 
-  file=${path:${#BASEDIR}}
+  file=`echo ${path:${#BASEDIR}} | sed "s/$TEMPLATE/$COMPONENTNAME/"`
 
   if [ -d $path ] 
   then
@@ -57,7 +57,6 @@ do
 done
 
 echo $TARGET/$COMPONENTNAME.xml
-mv $TARGET/$TEMPLATE.php $TARGET/$COMPONENTNAME.php
 sed "s/component_description/$DESCRIPTION/" "$BASEDIR/$TEMPLATE.xml" |
    sed "s/component_creation_date/`date +%d.%m.%Y`/" |
    sed "s/$TEMPLATE/$COMPONENTNAME/" > "$TARGET/$COMPONENTNAME.xml"

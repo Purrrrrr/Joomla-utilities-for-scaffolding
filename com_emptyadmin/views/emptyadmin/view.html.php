@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class EmptyadminViewItem extends JView
+class EmptyadminViewEmptyadmin extends JView
 {
 	protected $form;
 	protected $item;
@@ -20,7 +20,7 @@ class EmptyadminViewItem extends JView
 	public function display($tpl = null)
 	{
 		$this->form		= $this->get('Form');
-		$this->item		= $this->get('Item');
+		$this->item		= $this->get('Emptyadmin');
 
 		parent::display($tpl);
 		$this->addToolbar();
