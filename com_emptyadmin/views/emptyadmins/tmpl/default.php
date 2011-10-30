@@ -25,7 +25,7 @@ JHtml::_('behavior.multiselect');
 					<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 				</td>
 				<td>
-          <a href="<?php echo JRoute::_('index.php?option=com_emptyadmin&task=item.edit&id='.(int) $item->id);?>">
+          <a href="<?php echo JRoute::_('index.php?option=com_emptyadmin&task=emptyadmin.edit&id='.(int) $item->id);?>">
             <?php echo $item->name; ?>
           </a>
 				</td>

@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
     <?php for($ie = 7; $ie <= 10; ++$ie):
     if (file_exists(dirname(__FILE__)."/css/ie{$ie}only.css")): ?>
     <!--[if IE 7]>
-        <link href="<?php echo $this->baseurl ?>/templates/sikariporras/css/ie<?php echo $ie; ?>only.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->baseurl ?>/templates/template_name/css/ie<?php echo $ie; ?>only.css" rel="stylesheet" type="text/css" />
     <![endif]-->
     <?php endif; endfor; ?>
 </head>
