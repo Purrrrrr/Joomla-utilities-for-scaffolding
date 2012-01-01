@@ -73,8 +73,10 @@ do
 done
 
 echo $TARGET/$COMPONENTNAME.xml
-sed "s/component_description/$DESCRIPTION/" "$BASEDIR/$TEMPLATE.xml" |
-   sed "s/component_creation_date/`date +%d.%m.%Y`/" |
-   sed "s/$TEMPLATE/$COMPONENTNAME/" > "$TARGET/$COMPONENTNAME.xml"
+sed -e "s/component_description/$DESCRIPTION/" \
+    -e "s/component_creation_date/`date +%d.%m.%Y`/" \
+    -e "s/$TEMPLATE/$COMPONENTNAME/" \
+    -e "s/$TEMPLATECAPS/$COMPONENTNAMECAPS/" \
+  "$BASEDIR/$TEMPLATE.xml" > "$TARGET/$COMPONENTNAME.xml"
 
 #ln -s `readlink -f \`dirname $0\``/copy_view.sh $TARGET/copy_view.sh
