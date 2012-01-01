@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class EmptyadminViewEmptyadmin extends JView
+class EmptyadminViewEmptyitem extends JView
 {
 	protected $form;
 	protected $item;
@@ -38,14 +38,14 @@ class EmptyadminViewEmptyadmin extends JView
 		$isNew		= ($this->item->id == 0);
 		JToolBarHelper::title('');
 
-    JToolBarHelper::apply('emptyadmin.apply');
-    JToolBarHelper::save('emptyadmin.save');
-    JToolBarHelper::save2copy('emptyadmin.save2copy');
+    JToolBarHelper::apply('emptyitem.apply');
+    JToolBarHelper::save('emptyitem.save');
+    JToolBarHelper::save2copy('emptyitem.save2copy');
 
 		if ($isNew)  {
-			JToolBarHelper::cancel('emptyadmin.cancel');
+			JToolBarHelper::cancel('emptyitem.cancel');
 		} else {
-			JToolBarHelper::cancel('emptyadmin.cancel', 'JTOOLBAR_CLOSE');
+			JToolBarHelper::cancel('emptyitem.cancel', 'JTOOLBAR_CLOSE');
 		}
 	}
 }

@@ -3,7 +3,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class EmptyadminViewEmptyadmins extends JView
+class EmptyadminViewEmptyitems extends JView
 {
 	protected $items;
 
@@ -27,10 +27,10 @@ class EmptyadminViewEmptyadmins extends JView
 	{
 		JToolBarHelper::title('', 'module.png');
 
-    JToolBarHelper::addNew('item.add');
-    //JToolBarHelper::publish('emptyadmins.publish', 'JTOOLBAR_PUBLISH', true);
-    //JToolBarHelper::unpublish('emptyadmins.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+    JToolBarHelper::addNew('emptyitem.add');
+    //JToolBarHelper::publish('emptyitems.publish', 'JTOOLBAR_PUBLISH', true);
+    //JToolBarHelper::unpublish('emptyitems.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 
-    JToolBarHelper::deleteList('Are you ser you want to remove these emptyadmins?', 'emptyadmins.delete');
+    JToolBarHelper::deleteList('Are you ser you want to remove these emptyitems?', 'emptyitems.delete');
 	}
 }
