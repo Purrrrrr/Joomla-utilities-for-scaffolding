@@ -40,7 +40,7 @@ do
     mkdir $TARGET$file
   else
     echo $TARGET$file
-    sed "s/${TEMPLATECOMPONENTNAME}View/${COMPONENTNAME}View/g" $path | sed "s/$TEMPLATENAMECAPS/$VIEWNAMECAPS/g" | sed "s/$TEMPLATENAME/$VIEWNAME/g" > $TARGET$file
+    sed -e "s/${TEMPLATECOMPONENTNAME}View/${COMPONENTNAME}View/g" -e "s/$TEMPLATENAMECAPS/$VIEWNAMECAPS/g" -e "s/$TEMPLATENAME/$VIEWNAME/g" $path > $TARGET$file
   fi
 
 done
