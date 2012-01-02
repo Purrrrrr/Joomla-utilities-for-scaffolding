@@ -1,30 +1,36 @@
 #!/bin/bash 
 
-if [ -z $1 ] 
+FILES=
+REPLACEMENTS=
+FILE=1
+
+for arg in $@; do
+  if [[ $arg == '-e' ]]; then
+    FILE=0
+  elif [[ $FILE == 1 ]]; then
+    [[ -d $arg && $arg != */ ]] && arg="$arg"/
+    FILES="$FILES $arg"
+  else
+    REPLACEMENTS="$REPLACEMENTS -e $arg"
+  fi
+done
+
+echo $FILES
+echo $REPLACEMENTS
+
+if [[ -z $FILES || -z $REPLACEMENTS ]]
 then
-  echo "Usage: $0 file [file2] ..."
+  echo "Usage: $0 file [file2] ... -e sed-expressions"
   echo "The program asks for a replacement string"
   exit 0
 fi
 
-regexp=1
-REPLACEMENTS=""
-while [[ -n $regexp ]]; do
-  echo "Replace:"
-  read regexp
-  if [[ -z $regexp ]]; then break; fi;
-  echo "With:"
-  read replacement
-  regexp="`echo "$regexp" | sed -e "s/\\//\\\\\\\\\\\\//g" -e "s/&/\\\\\&/g"`"
-  replacement="`echo "$replacement" | sed -e "s/\\//\\\\\\\\\\\\//g" -e "s/&/\\\\\&/g"`"
-  REPLACEMENTS="$REPLACEMENTS -e s/$regexp/$replacement/g"
-done
-
-find $@ | while read file; do
+find $FILES | while read file; do
   target=`echo $file | sed $REPLACEMENTS`
+  echo $file -\> $target
   if [[ -d $file ]]; then
-    mkdir $target
+    mkdir -p $target
   else
-    echo sed $REPLACEMENTS $file \> $target
+    sed $REPLACEMENTS $file > $target
   fi
 done;
