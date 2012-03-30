@@ -4,7 +4,7 @@ BASEDIR="`dirname $0`/empty_template"
 
 if [ -z $1 ] 
 then
-  echo "Usage: create-template.sh dir/to/new/template"
+  echo "Usage: $0 dir/to/new/template"
   echo "The new template directory will be created for you"
   exit 0
 fi

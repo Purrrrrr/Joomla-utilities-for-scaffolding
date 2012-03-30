@@ -9,7 +9,7 @@ BASEDIR="`dirname $0`/com_$TEMPLATE"
 
 if [ -z $1 ] 
 then
-  echo "Usage: create-template.sh dir/to/new/component"
+  echo "Usage: $0 dir/to/new/component"
   echo "The new component directory will be created for you"
   exit 0
 fi

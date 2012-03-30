@@ -3,7 +3,7 @@ BASEDIR="`dirname $0`"
 
 if [ -z $1 -o -z $2 ] 
 then
-  echo "Usage: copy-view.sh dir/to/source/views/view dir/to/target/views/view"
+  echo "Usage: $0 dir/to/source/views/view dir/to/target/views/view"
   echo "Copies a joomla view directory and changes the classname according to the chosen directory name and component."
   exit 0
 fi
