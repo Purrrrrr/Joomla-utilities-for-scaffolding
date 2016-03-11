@@ -3,7 +3,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class EmptyadminViewEmptyitems extends JView
+class EmptyadminViewEmptyitems extends JViewLegacy
 {
 	protected $items;
 

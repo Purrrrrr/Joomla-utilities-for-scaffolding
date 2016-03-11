@@ -10,6 +10,6 @@ if (!JFactory::getLanguage()->load('lang', JPATH_COMPONENT)) {
 }
 
 // Execute the task.
-$controller	= JController::getInstance('Emptyadmin');
+$controller	= JControllerLegacy::getInstance('Emptyadmin');
 $controller->execute(JRequest::getCmd('task'));
 $controller->redirect();
